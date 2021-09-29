@@ -5,6 +5,14 @@ from lux.constants import Constants
 from lux.game_constants import GAME_CONSTANTS
 from lux import annotate
 
+
+logfile = "agent.log"
+
+open(logfile,"w")
+
+with open(logfile,"a") as f:
+    f.write(f"-- Starting new game --\n")
+
 DIRECTIONS = Constants.DIRECTIONS
 game_state = None
 

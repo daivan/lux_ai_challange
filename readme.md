@@ -1,8 +1,5 @@
 # Lux AI Challange
-This code base is for the https://github.com/Lux-AI-Challenge/Lux-Design-2021 challange
-
-# The code
-We are using python to send in our submission
+This code base is for the https://github.com/Lux-AI-Challenge/Lux-Design-2021 challange.
 
 # Prerequisite
 You need to install the npm package for lux
@@ -40,3 +37,43 @@ Also a replay file should have been created in the replays folder
 Once you have the replay, to view it you can just upload the file here: 
 
 https://2021vis.lux-ai.org/
+
+# The code
+We are using python to send in our submission  
+You will spend most of your time coding in the agent.py file
+This is our reference https://www.youtube.com/watch?v=6_GXTbTL9Uc
+
+# Debugging
+To try and understand what happen, try and add log entries in different places
+```
+with open(logfile,"a") as f:
+    f.write(f"Enter log text or {variableArray['key']} here \n")
+```
+It should be printed in the agent.log file.
+
+# Submit your bot
+When you are ready to submit, just compress your bot with this simple command:
+```
+tar -czvf daivanbot.tar.gz *
+```
+You should now have a file called daivanbot.tar.gz
+
+Go to the website https://www.kaggle.com/c/lux-ai-2021  
+Make sure you are logged in and have a verified account.  
+
+Click [Submit Agent]
+Go to the site https://www.kaggle.com/c/lux-ai-2021/submit
+
+## Follow the steps:
+You can submit as many agents as you want.  
+Follow these instructions to submit a new agent
+
+### Step 1 
+Upload submission file. Here you want to attach the recently zipped tar.gz file.
+
+### Step 2
+Write a description of what is new with the bot from your previous iterations.
+
+### Step 3
+Click on submit and just wait.  
+After a few minutes you will see your new entry in the [My submissions](https://www.kaggle.com/c/lux-ai-2021/submissions) page.
