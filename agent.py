@@ -117,4 +117,25 @@ def agent(observation, configuration):
     # you can add debug annotations using the functions in the annotate object
     # actions.append(annotate.circle(0, 0))
     
+    # Try and build a Unit
+    with open(logfile,"a") as f:
+        f.write(f"We have this many cities: {player.city_tile_count} \n")
+        f.write(f"We have this many units: {len(player.units)} \n")
+
+    if player.city_tile_count>len(player.units):
+        with open(logfile,"a") as f:
+            f.write(f"We have less units than cities. Can build a unit \n")
+            f.write(f"What is this. {player.cities} \n")
+        
+        for city in player.cities.values():
+            for city_tile in city.citytiles:
+
+                with open(logfile,"a") as f:
+                    f.write(f"Does this even work? {city_tile} \n") 
+
+                if city_tile.can_act():
+                        actions.append(city_tile.build_worker())
+                        with open(logfile, "a") as f:
+                            f.write(f"Created and worker \n")
+        
     return actions
