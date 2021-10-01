@@ -1,4 +1,5 @@
-# Lux AI Challange
+# Lux AI Challange 2021
+The competition runs until December 6th 2021  
 This code base is for the https://github.com/Lux-AI-Challenge/Lux-Design-2021 challange.
 
 # Prerequisite
@@ -42,6 +43,8 @@ https://2021vis.lux-ai.org/
 We are using python to send in our submission  
 You will spend most of your time coding in the agent.py file
 This is our reference https://www.youtube.com/watch?v=6_GXTbTL9Uc
+
+To get all the API https://github.com/Lux-AI-Challenge/Lux-Design-2021/tree/master/kits
 
 # Debugging
 To try and understand what happen, try and add log entries in different places

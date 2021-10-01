@@ -16,11 +16,9 @@ with open(logfile,"a") as f:
 DIRECTIONS = Constants.DIRECTIONS
 game_state = None
 
-should_we_build_a_city = True
 
 def agent(observation, configuration):
     global game_state
-    global should_we_build_a_city
 
     ### Do not edit ###
     if observation["step"] == 0:
@@ -46,10 +44,7 @@ def agent(observation, configuration):
                 resource_tiles.append(cell)
 
     # we iterate over all our units and do something with them
-    
-
     for unit in player.units:
-
         if unit.is_worker() and unit.can_act():
             closest_dist = math.inf
             closest_resource_tile = None
@@ -65,43 +60,8 @@ def agent(observation, configuration):
                 if closest_resource_tile is not None:
                     actions.append(unit.move(unit.pos.direction_to(closest_resource_tile.pos)))
             else:
-                
-                if should_we_build_a_city:
-                    
-                    with open(logfile,"a") as f:
-                        f.write(f"We can build a city!! the unit has: {unit.cargo.wood} items \n")
-                        f.write(f"Get unit position {unit.pos.x}, {unit.pos.y} \n")
-                        
-                        #can_i_build_here=unit.can_build(game_state.map.get_cell(unit.pos))
-                        #what_is_this = game_state.map.get_cell(unit.pos.x, unit.pos.y)
-                        #can_i_build_here = unit.can_build(game_state.map)
-                        #f.write(f"Can I build a city here? {what_is_this} \n")
-                        #f.write(f"Can I build a city here? {can_i_build_here} \n")
-  
-
-                    
-                    # Find an empty location to build
-                    if unit.can_build(game_state.map) == False:
-                        with open(logfile,"a") as f:
-                            f.write(f"Cant build here, move! \n")
-   
-                        build_location = game_state.map.get_cell(1,1)
-                        actions.append(unit.move(unit.pos.direction_to(build_location.pos)))
-                    else:
-                        action = unit.build_city()
-                        actions.append(action)
-                        with open(logfile,"a") as f:
-                            f.write(f"Building a City: {action} \n")
-                        should_we_build_a_city = False
-                    
-                    
-
-
-                    
-                
-
                 # if unit is a worker and there is no cargo space left, and we have cities, lets return to them
-                elif len(player.cities) > 0:
+                if len(player.cities) > 0:
                     closest_dist = math.inf
                     closest_city_tile = None
                     for k, city in player.cities.items():
