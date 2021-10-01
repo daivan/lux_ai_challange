@@ -91,12 +91,14 @@ def agent(observation, configuration):
     first_wood = wood_tiles[0]
     if first_wood.pos.x != 0:
         cell_north = game_state.map.get_cell(first_wood.pos.x-1, first_wood.pos.y)
-    cell_south = game_state.map.get_cell(first_wood.pos.x+1, first_wood.pos.y)
+
     if first_wood.pos.y != 0:
         cell_west = game_state.map.get_cell(first_wood.pos.x, first_wood.pos.y-1)
+
     cell_east = game_state.map.get_cell(first_wood.pos.x, first_wood.pos.y+1)
+    cell_south = game_state.map.get_cell(first_wood.pos.x+1, first_wood.pos.y)
     
-    if not cell_north.has_resource() and first_wood.pos.x != 0:
+    if first_wood.pos.x != 0 and not cell_north.has_resource():
         first_city_build_position = cell_north.pos
         with open(logfile,"a") as f:
             f.write(f"is good: {cell_north.pos} \n")
@@ -104,7 +106,7 @@ def agent(observation, configuration):
         first_city_build_position = cell_south.pos
         with open(logfile,"a") as f:
             f.write(f"is good: {cell_south.pos} \n")
-    if not cell_west.has_resource() and first_wood.pos.y != 0:
+    if first_wood.pos.y != 0 and not cell_west.has_resource():
         first_city_build_position = cell_west.pos
         with open(logfile,"a") as f:
             f.write(f"is good: {cell_west.pos} \n")
